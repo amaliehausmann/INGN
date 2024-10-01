@@ -1,9 +1,15 @@
 import { Outlet } from "react-router-dom";
+import { Header } from "../components/Header/Header";
+import { useState } from "react";
 
 export const MainLayout = () => {
+    const [selectedCategory, setSelectedCategory] = useState(null);
   return (
     <>
-    <Outlet></Outlet>
+    <Header setSelectedCategory={setSelectedCategory}></Header>
+    <main>
+    <Outlet context={{selectedCategory}}></Outlet>
+    </main>
     </>
   )
 }

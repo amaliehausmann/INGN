@@ -2,9 +2,12 @@ import { useQuery } from "@tanstack/react-query";
 import request from "graphql-request";
 import { allNews } from "../queries/allNews";
 import { NewsCard } from "../components/NewsCard/NewsCard";
-import { Link } from "react-router-dom";
+import { Link, useOutletContext } from "react-router-dom";
+
 
 export const Home = () => {
+    const {selectedCategory} = useOutletContext();
+
   const { data, isLoading, error } = useQuery({
     queryKey: ["allNews"],
     queryFn: async () => request(import.meta.env.VITE_PUBLIC_ENDPOINT, allNews),
@@ -18,10 +21,15 @@ export const Home = () => {
     return <p>Error loading news: {error.message}</p>;
   }
 
+  const filteredNews = selectedCategory && selectedCategory !== 'alle'
+    ? data.newscards.filter((item) => item.category === selectedCategory)
+    : data.newscards;
+
   return (
     <section>
-      {data.newscards.map((item) => (
+      {filteredNews.map((item) => (
         <NewsCard
+          key={item.slug} 
           title={item.header}
           content={item.content.substring(0, 100) + "..."}
           date={item.date}
