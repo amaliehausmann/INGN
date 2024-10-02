@@ -17,7 +17,7 @@ function App() {
       <Routes>
         <Route path='/' element={<MainLayout/>}>
         <Route index element={<Home/>}></Route>
-        <Route path='/singlenews/:newsslug' element={<SingleNews/>}></Route>
+        <Route path='/singlenews/:newsslug' element={<SingleNews user={user}/>}></Route>
         <Route path='/signin' element={<Signin setUser={setUser} user={user} />}></Route>
         <Route element={<ProtectedRoute user={user}/>}>
         <Route path='/dashboard' element={<Dashboard/>}></Route>

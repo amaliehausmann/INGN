@@ -15,22 +15,31 @@ export const Signin = ({setUser, user}) => {
         headers: { "Content-type": "application/json" },
       })
         .then((res) => res.json())
-        .then((data) => data?.token ? setUser(data) : console.log('Forkert password'));
+        .then((data) => {
+          if (data?.token) {
+              setUser({ token: data.token });
+              localStorage.setItem('authToken', data.token);
+          } else {
+              console.log('Invalid email or password');
+          }
+      });
+      
     }
   }
 
   function signOut(){
     setUser(null);
+    localStorage.removeItem('authToken')
   }
 
   return (
     !user ? <div>
       <h1>Sign In</h1>
       <form onSubmit={(event) => submitForm(event)}>
-        <label htmlFor="">Email</label>
+        <label >Email</label>
         <input type="email" name="email" />
 
-        <label htmlFor="">Password</label>
+        <label >Password</label>
         <input type="password" name="password" />
 
         <input type="submit" value="Submit" />

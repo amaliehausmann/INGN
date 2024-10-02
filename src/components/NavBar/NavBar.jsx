@@ -6,7 +6,7 @@ import style from "./NavBar.module.scss";
 
 export const NavBar = ({ setSelectedCategory, isNavShown }) => {
   const location = useLocation();
-  const isSingleNewsPage = location.pathname.includes("/singlenews/");
+  const isNotHomePage = location.pathname !== "/";
 
   const { data, isLoading, error } = useQuery({
     queryKey: ["allCategories"],
@@ -30,14 +30,14 @@ export const NavBar = ({ setSelectedCategory, isNavShown }) => {
     >
       <ul>
         <li onClick={() => setSelectedCategory("alle")}>
-          <span> {isSingleNewsPage ? <Link to="/">Alle</Link> : "Alle"}</span>
+          <span> {isNotHomePage ? <Link to="/">Alle</Link> : "Alle"}</span>
         </li>
         {data.categories.map((item) => (
           <li
             key={item.category}
             onClick={() => setSelectedCategory(item.category)}
           >
-            {isSingleNewsPage ? (
+            {isNotHomePage ? (
               <Link to="/">{item.category}</Link>
             ) : (
               item.category

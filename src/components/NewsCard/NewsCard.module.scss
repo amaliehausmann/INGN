@@ -1,4 +1,13 @@
+@use '../../styles/placeholders' as *;
+@use '../../styles/variables' as *;
+
 .cardStyling{
+
+    @extend %roboto;
+
+    .redText{
+        color: $red;
+    }
 
     img{
         width: 100%;

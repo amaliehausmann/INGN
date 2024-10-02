@@ -3,13 +3,14 @@ import request from "graphql-request";
 import { allNews } from "../queries/allNews";
 import { NewsCard } from "../components/NewsCard/NewsCard";
 import { Link, useOutletContext } from "react-router-dom";
-
+import { NewsContainer } from "../components/NewsContainer/NewsContainer";
 
 export const Home = () => {
-    const {selectedCategory} = useOutletContext();
+  const { selectedCategory } = useOutletContext();
+
 
   const { data, isLoading, error } = useQuery({
-    queryKey: ["allNews"],
+    queryKey: ["allNews", selectedCategory],
     queryFn: async () => request(import.meta.env.VITE_PUBLIC_ENDPOINT, allNews),
   });
 
@@ -21,24 +22,25 @@ export const Home = () => {
     return <p>Error loading news: {error.message}</p>;
   }
 
-  const filteredNews = selectedCategory && selectedCategory !== 'alle'
-    ? data.newscards.filter((item) => item.category === selectedCategory)
-    : data.newscards;
+  const filteredNews =
+    selectedCategory && selectedCategory !== "alle"
+      ? data.newscards.filter((item) => item.category === selectedCategory)
+      : data.newscards;
 
   return (
-    <section>
+    <NewsContainer>
       {filteredNews.map((item) => (
         <NewsCard
-          key={item.slug} 
+          key={item.slug}
           title={item.header}
           content={item.content.substring(0, 100) + "..."}
           date={item.date}
           writer={item.writer}
           imageSRC={item.image[0]?.url}
         >
-            <Link to={`./singlenews/${item.slug}`}>Læs mere</Link>
+          <Link to={`./singlenews/${item.slug}`}>Læs mere</Link>
         </NewsCard>
       ))}
-    </section>
+    </NewsContainer>
   );
 };

@@ -18,8 +18,15 @@ export const Footer = () => {
         <section>
             <p><span>Politik</span></p>
             <p>Privatlivspolitik</p>
-            <p>Cokkiepolitik</p>
-            <p></p>
+            <p>Cookiepolitik</p>
+            <p>Købsinformation</p>
+            <p>Delingspolitik</p>
+        </section>
+        <section>
+          <p><span>Kontakt</span></p>
+          <p>ingn@nyhed.dk</p>
+          <p>telefon: 23232323</p>
+          <p>fax: 123123-333</p>
         </section>
     </footer>
   )
