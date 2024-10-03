@@ -1,16 +1,426 @@
 @use '../../styles/placeholders' as *;
 @use '../../styles/variables' as *;
 
-.cardStyling{
-
+.cardStyling {
     @extend %roboto;
+    background-color: $white;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
 
-    .redText{
-        color: $red;
+    h1 {
+        margin: auto;
+        padding: 2vw;
+        font-weight: 400;
+        font-size: 7vw;
     }
 
-    img{
+    p {
+        padding: 2vw;
+        margin: 2vw 0;
+        font-size: 4vw;
+    }
+
+    .redText {
+        color: $red;
+        margin-top: -1vw;
+        margin-bottom: -1vw;
+    }
+
+    .imageContainer {
+        margin: auto;
+        height: 100%;
+        width: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        margin-top: 10vw;
+    }
+
+    a {
+        color: $black;
+        text-decoration: none;
+        padding: 2vw;
+        padding-top: 0;
+        font-size: 4vw;
+    }
+
+    @media screen and (min-width: 768px) {
+        h1 {
+            font-size: 4vw;
+        }
+
+        p {
+            font-size: 3vw;
+        }
+
+        .redText {
+            margin-top: -2vw;
+        }
+
+        .imageContainer {
+            margin-top: 2vw;
+        }
+
+        a {
+            font-size: 3vw;
+        }
+    }
+}
+
+@media screen and (min-width: 1025px) {
+
+    .cardStyling {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 22vw auto;
+        h1 {
+            padding: 2vw;
+            font-weight: 400;
+            font-size: 3vw;
+            padding-bottom: 1vw;
+        }
+    
+        p {
+            padding: 2vw;
+            margin: 0;
+            font-size: 1.5vw;
+        }
+    
+        .redText {
+            color: $red;
+            margin: 0;
+            padding: 0 2vw;
+        }
+    
+        .imageContainer {
+            margin: auto;
+            margin-top: 0;
+        }
+    
+        a {
+            color: $black;
+            text-decoration: none;
+            padding: 2vw;
+            padding-top: 0;
+            font-size: 1.5vw;
+        }
+    }
+
+    .news-1{
+        grid-area: 1 / 1 / span 2 / span 2;
+        .imageContainer{
+            height: 40vw;
+        }
+    }
+
+    .news-2{
+        grid-area: 3 / 1/ span 2 / span 1;
+
+        .contentStyling{
+            display: none;
+        }
+        .imageContainer{
+            height: 50vw;
+        }
+    }
+
+    .news-3{
+        grid-area: 3/2/span 1/ span 1;
+
+        .contentStyling{
+            display: none;
+        }
+
+        .imageContainer{
+            height: 30vw;
+        }
+    }
+
+    .news-4{
+        grid-area: 4/2/span 2/ span 1;
+
+        .contentStyling{
+            display: none;
+        }
+
+        .imageContainer{
+            height: 40vw;
+        }
+    }
+
+    .news-5{
+        grid-area: 5/1/span 1/span 1;
+
+        .contentStyling{
+            display: none;
+        }
+        .imageContainer{
+            height: 20vw;
+        }
+    }
+
+    .news-6{
+        grid-area: 6/1/span 1 / span 2;
+        display: flex;
+        flex-direction: row-reverse;
+
+        .imageContainer{
+            width: 88%;
+            height: 30vw;
+        }
+    }
+
+    .news-7{
+        grid-area: 7/1/span 1 /span 2;
+        display: flex;
+        flex-direction: row;
+        .imageContainer{
+            width: 88%;
+            height: 30vw;
+        }
+    }
+
+    .news-8{
+        grid-area: 8/1/span 1/span 1;
+
+        .contentStyling{
+            display: none;
+        }
+
+        .imageContainer{
+            height: 20vw;
+        }
+    }
+
+    .news-9{
+        grid-area: 8/2/span 1/span 1;
+
+        .contentStyling{
+            display: none;
+        }
+        .imageContainer{
+            height: 20vw;
+        }
+    }
+
+    .news-10{
+        grid-area: 9 / 1 / span 2 / span 2;
+        .imageContainer{
+            height: 40vw;
+        }
+    }
+
+    .news-11{
+        grid-area: 11 / 1/ span 2 / span 1;
+
+        .contentStyling{
+            display: none;
+        }
+        .imageContainer{
+            height: 50vw;
+        }
+    }
+
+    .news-12{
+        grid-area: 11/2/span 1/ span 1;
+
+        .contentStyling{
+            display: none;
+        }
+
+        .imageContainer{
+            height: 30vw;
+        }
+    }
+
+    .news-13{
+        grid-area: 12/2/span 2/ span 1;
+
+        .contentStyling{
+            display: none;
+        }
+
+        .imageContainer{
+            height: 40vw;
+        }
+    }
+
+    .news-14{
+        grid-area: 13/1/span 1/span 1;
+
+        .contentStyling{
+            display: none;
+        }
+        .imageContainer{
+            height: 20vw;
+        }
+    }
+
+    .news-15{
+        grid-area: 14/1/span 1 / span 2;
+        display: flex;
+        flex-direction: row-reverse;
+
+        .imageContainer{
+            width: 88%;
+            height: 30vw;
+        }
+    }
+
+    .news-16{
+        grid-area: 15/1/span 1 /span 2;
+        display: flex;
+        flex-direction: row;
+        .imageContainer{
+            width: 88%;
+            height: 30vw;
+        }
+    }
+
+    .news-17{
+        grid-area: 16/1/span 1/span 1;
+
+        .contentStyling{
+            display: none;
+        }
+
+        .imageContainer{
+            height: 20vw;
+        }
+    }
+
+    .news-18{
+        grid-area: 16/2/span 1/span 1;
+
+        .contentStyling{
+            display: none;
+        }
+        .imageContainer{
+            height: 20vw;
+        }
+    }
+
+    .news-19{
+        grid-area: 17 / 1 / span 2 / span 2;
+        .imageContainer{
+            height: 40vw;
+        }
+    }
+
+    .news-20{
+        grid-area: 19 / 1/ span 2 / span 1;
+
+        .contentStyling{
+            display: none;
+        }
+        .imageContainer{
+            height: 50vw;
+        }
+    }
+
+    .news-21{
+        grid-area: 19/2/span 1/ span 1;
+
+        .contentStyling{
+            display: none;
+        }
+
+        .imageContainer{
+            height: 30vw;
+        }
+    }
+
+    .news-22{
+        grid-area: 20/2/span 2/ span 1;
+
+        .contentStyling{
+            display: none;
+        }
+
+        .imageContainer{
+            height: 40vw;
+        }
+    }
+
+    .news-23{
+        grid-area: 21/1/span 1/span 1;
+
+        .contentStyling{
+            display: none;
+        }
+        .imageContainer{
+            height: 20vw;
+        }
+    }
+
+    .news-24{
+        grid-area: 22/1/span 1 / span 2;
+        display: flex;
+        flex-direction: row-reverse;
+
+        .imageContainer{
+            width: 88%;
+            height: 30vw;
+        }
+    }
+
+    .news-25{
+        grid-area: 23/1/span 1 /span 2;
+        display: flex;
+        flex-direction: row;
+        .imageContainer{
+            width: 88%;
+            height: 30vw;
+        }
+    }
+
+    .news-26{
+        grid-area: 24/1/span 1/span 1;
+
+        .contentStyling{
+            display: none;
+        }
+
+        .imageContainer{
+            height: 20vw;
+        }
+    }
+
+    .news-27{
+        grid-area: 24/2/span 1/span 1;
+
+        .contentStyling{
+            display: none;
+        }
+        .imageContainer{
+            height: 20vw;
+        }
+    }
+}
+
+.dontShow {
+    img {
+        display: none;
+    }
+
+    .imageContainer {
+        img {
+            display: block;
+        }
+    }
+}
+
+.topPicture {
+    display: flex;
+    margin: 8vw 4vw;
+
+    img {
+        display: block;
         width: 100%;
     }
 
+    .imageContainer {
+        display: none;
+    }
 }

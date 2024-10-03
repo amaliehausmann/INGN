@@ -1,0 +1,117 @@
+@use "../../styles/placeholders" as *;
+@use "../../styles/variables" as *;
+
+.formStyling {
+  @extend %roboto;
+  padding: 4vw;
+  background-color: $white;
+  margin: 12vw 4vw;
+
+  h1 {
+    font-weight: 500;
+    font-size: 8vw;
+    margin-bottom: 8vw;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+
+    label {
+      @extend %roboto;
+      font-size: 4vw;
+    }
+
+    input {
+      border: 2px solid $red;
+      margin: 2vw 0;
+      margin-bottom: 8vw;
+      padding: 2vw;
+      font-size: 3.5vw;
+    }
+
+    .submitBtn {
+      background-color: $white;
+      font-size: 4vw;
+      width: 50vw;
+      align-self: center;
+
+      @media screen and (min-width: 768px) {
+        font-size: 3vw;
+        width: 40vw;
+      }
+
+      @media screen and (min-width: 1025px) {
+        font-size: 1.5vw;
+        width: 15vw;
+        align-self: flex-start;
+        border: 1px solid $red;
+      }
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    margin: 8vw 4vw;
+
+    h1 {
+      font-size: 6vw;
+    }
+
+    form {
+      label {
+        font-size: 3vw;
+      }
+
+      input {
+        font-size: 3vw;
+      }
+    }
+  }
+
+  @media screen and (min-width: 1025px) {
+    padding: 10vw 20vw;
+    padding: 8vw 16vw 30vw 16vw;
+    margin: 4vw 8vw;
+
+    h1 {
+      font-size: 3vw;
+      margin-bottom: 5vw;
+      font-weight: 700;
+    }
+
+    form {
+      label {
+        font-size: 1.5vw;
+        margin-bottom: -1vw;
+      }
+
+      input {
+        margin-bottom: 3vw;
+        padding: 1.5vw;
+        font-size: 1.5vw;
+      }
+    }
+  }
+}
+
+.signoutBtn {
+  @extend %roboto;
+  font-size: 5vw;
+  display: block;
+  margin: 40vw auto;
+  color: $black;
+  background-color: $white;
+  border: 2px solid $red;
+  padding: 2vw 10vw;
+
+  @media screen and (min-width: 768px) {
+    font-size: 4vw;
+    margin: 20vw auto;
+  }
+
+  @media screen and (min-width: 1025px) {
+    font-size: 1.5vw;
+    padding: 2vw 8vw;
+    margin: 25vw auto;
+  }
+}

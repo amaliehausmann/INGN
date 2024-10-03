@@ -64,6 +64,7 @@ export const SingleNews = ({ user }) => {
         date={data.newscard.date}
         writer={data.newscard.writer}
         imageSRC={data.newscard.image[0]?.url}
+        imageStyling='topPicture'
       ></NewsCard>
     </div>
   );

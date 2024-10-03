@@ -27,20 +27,28 @@ export const Home = () => {
       ? data.newscards.filter((item) => item.category === selectedCategory)
       : data.newscards;
 
-  return (
-    <NewsContainer>
-      {filteredNews.map((item) => (
-        <NewsCard
-          key={item.slug}
-          title={item.header}
-          content={item.content.substring(0, 100) + "..."}
-          date={item.date}
-          writer={item.writer}
-          imageSRC={item.image[0]?.url}
-        >
-          <Link to={`./singlenews/${item.slug}`}>Læs mere</Link>
-        </NewsCard>
-      ))}
-    </NewsContainer>
-  );
+      return (
+        <NewsContainer>
+          {filteredNews.map((item, index) => {
+            const formattedDate = new Date(item.date).toLocaleDateString('en-GB');
+            const cardNumber = index + 1
+            return (
+              <NewsCard
+                key={item.slug}
+                title={item.header}
+                content={item.content.substring(0, 100) + "..."}
+                date={formattedDate}
+                writer={item.writer}
+                imageSRC={item.image[0]?.url}
+                imageStyling='dontShow'
+                number={cardNumber}
+              >
+                <Link to={`./singlenews/${item.slug}`}>Læs mere</Link>
+              </NewsCard>
+            );
+          })}
+        </NewsContainer>
+      );
+      
+      
 };

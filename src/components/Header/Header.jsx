@@ -25,7 +25,7 @@ export const Header = ({ setSelectedCategory }) => {
         <Link to="/signin">
           <IoPersonSharp />
         </Link>
-        <IoMdMenu onClick={toggleNavBar} />
+        <IoMdMenu className={style.menuStyling} onClick={toggleNavBar} />
       </div>
     </header>
   );
