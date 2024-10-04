@@ -11,6 +11,7 @@ export const SingleNews = ({ user }) => {
   const navigate = useNavigate();
   const { newsslug } = useParams();
 
+  //   Single news fetch som opdateres når newsslug opdateres.Fetcher baseret på hvad newsslug er
   const { data, isLoading, error } = useQuery({
     queryKey: ["singleNews", newsslug],
     queryFn: async () =>

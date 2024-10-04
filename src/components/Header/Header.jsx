@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 export const Header = ({ setSelectedCategory }) => {
   const [isNavShown, setIsNavShown] = useState(false);
 
+  //   Function der toggler om navbaren er synlig
   function toggleNavBar() {
     setIsNavShown(!isNavShown);
   }

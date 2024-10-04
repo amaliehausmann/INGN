@@ -14,60 +14,66 @@ export function UpdateNews({ user }) {
   const { data, isLoading, error } = useQuery({
     queryKey: ["singleNews"],
     queryFn: async () =>
-      request(import.meta.env.VITE_PUBLIC_ENDPOINT, singleNews, { newsslug: slug }),
+      request(import.meta.env.VITE_PUBLIC_ENDPOINT, singleNews, {
+        newsslug: slug,
+      }),
   });
 
   const updateMutation = useMutation({
-    mutationFn: async (data) => request({
+    mutationFn: async (data) =>
+      request({
         url: import.meta.env.VITE_PUBLIC_ENDPOINT,
         document: updateNews,
         variables: {
-            ...data,
-            slug: slug,
+          ...data,
+          slug: slug,
         },
 
-        requestHeaders: { Authorization: "Bearer " + user.token},
-    }),
-    onError:(err) => {
-        console.error(err);
+        requestHeaders: { Authorization: "Bearer " + user.token },
+      }),
+    onError: (err) => {
+      console.error(err);
     },
     onSuccess: () => {
-        console.log("mutation succcessful");
-        queryClient.invalidateQueries();
+      console.log("mutation succcessful");
+      queryClient.invalidateQueries();
     },
     onSettled: async () => {
-        request({
-            url: import.meta.env.VITE_PUBLIC_ENDPOINT,
-            document: publishNews,
-            variables: {
-                slug: slug,
-            },
+      request({
+        url: import.meta.env.VITE_PUBLIC_ENDPOINT,
+        document: publishNews,
+        variables: {
+          slug: slug,
+        },
 
-            requestHeaders: { Authorization: "Bearer " + user.token},
-        });
+        requestHeaders: { Authorization: "Bearer " + user.token },
+      });
     },
   });
 
-  if(error){
-    return <p>Error in fetch: {error.message}</p>
+  if (error) {
+    return <p>Error in fetch: {error.message}</p>;
   }
 
-  if(isLoading){
-    return <p>Loading content....</p>
+  if (isLoading) {
+    return <p>Loading content....</p>;
   }
 
-  function updateNewsonSubmit(event){
+  function updateNewsonSubmit(event) {
     event.preventDefault(event);
     const header = event.target.header.value;
     const content = event.target.content.value;
 
-    if(header && content){
-        const data = {header: header, content: content};
-        updateMutation.mutate(data);
+    if (header && content) {
+      const data = { header: header, content: content };
+      updateMutation.mutate(data);
     }
   }
 
-  return(
-    <UpdateForm callback={updateNewsonSubmit} data={data?.newscard}></UpdateForm>
+  return (
+    <UpdateForm
+      callback={updateNewsonSubmit}
+      data={data?.newscard}
+    ></UpdateForm>
   );
 }

@@ -6,9 +6,10 @@ import { Link, useOutletContext } from "react-router-dom";
 import { NewsContainer } from "../components/NewsContainer/NewsContainer";
 
 export const Home = () => {
+  //React-router-dom hook til at access data fra mainlayout
   const { selectedCategory } = useOutletContext();
 
-  //   Fetch af alle nyheder
+  //   Fetch af alle nyheder. Fetcher på ny hver gang selectedCategory opdateres
   const { data, isLoading, error } = useQuery({
     queryKey: ["allNews", selectedCategory],
     queryFn: async () => request(import.meta.env.VITE_PUBLIC_ENDPOINT, allNews),
@@ -48,10 +49,8 @@ export const Home = () => {
       {/* Mapper vores nye resized arrays udfra filteredNews og 9 som er den mængde items der skal være i hver container */}
       {resizeArray(filteredNews, 9).map((newsArray, mapKey) => (
         <NewsContainer key={mapKey}>
-
           {/* mapper newsArrayet */}
           {newsArray.map((item, index) => {
-            
             // Formatterer datoen til engelsk dato i stedet for amerikansk
             const formattedDate = new Date(item.date).toLocaleDateString(
               "en-GB"

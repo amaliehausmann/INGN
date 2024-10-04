@@ -4,7 +4,6 @@ export const Form = ({ setUser, user }) => {
   function submitForm(event) {
     event.preventDefault();
 
-    console.log("Din value er:", event.target.email.value);
     let email = event.target.email.value;
     let password = event.target.password.value;
 
@@ -20,7 +19,6 @@ export const Form = ({ setUser, user }) => {
         .then((data) => {
           if (data?.token) {
             setUser({ token: data.token });
-            localStorage.setItem("authToken", data.token);
           } else {
             console.log("Invalid email or password");
           }
@@ -30,7 +28,6 @@ export const Form = ({ setUser, user }) => {
 
   function signOut() {
     setUser(null);
-    localStorage.removeItem("authToken");
   }
 
   return !user ? (
