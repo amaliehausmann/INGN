@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import request from "graphql-request";
-import { useParams, useNavigate, redirect } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import { singleNews } from "../queries/singleNews";
 import { NewsCard } from "../components/NewsCard/NewsCard";
 import { deleteNews } from "../queries/deleteNews";
@@ -35,7 +35,7 @@ export const SingleNews = ({ user }) => {
       console.log("Mutation Delete Successful");
       toast("News Deleted successfully");
       queryClient.invalidateQueries();
-      navigate('/')
+      navigate("/");
     },
     onError: (error) => {
       console.error("Error deleting news:", error);
@@ -54,9 +54,12 @@ export const SingleNews = ({ user }) => {
   return (
     <div>
       {user && (
-        <button onClick={() => deleteMutation.mutate(data.newscard.slug)}>
-          Delete me
-        </button>
+        <div>
+          <button onClick={() => deleteMutation.mutate(data.newscard.slug)}>
+            Delete me
+          </button>
+          <Link to={`/updatenews/${data.newscard.slug}`}>Update</Link>
+        </div>
       )}
       <NewsCard
         title={data.newscard.header}
@@ -64,7 +67,7 @@ export const SingleNews = ({ user }) => {
         date={data.newscard.date}
         writer={data.newscard.writer}
         imageSRC={data.newscard.image[0]?.url}
-        imageStyling='topPicture'
+        imageStyling="topPicture"
       ></NewsCard>
     </div>
   );

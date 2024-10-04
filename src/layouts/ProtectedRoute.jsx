@@ -1,14 +1,14 @@
-import { Navigate } from "react-router-dom"
-import { Outlet } from "react-router-dom"
+import { Navigate } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 
-export const ProtectedRoute = ({user}) => {
-    if(!user){
-        return <Navigate to="/" redirect></Navigate>
-    }
+export const ProtectedRoute = ({ user }) => {
+  if (!user) {
+    return <Navigate to="/" redirect></Navigate>;
+  }
   return (
     <>
-        <div>ProtectedRoute</div>
-        <Outlet></Outlet>
+      <div>ProtectedRoute</div>
+      <Outlet></Outlet>
     </>
-  )
-}
+  );
+};

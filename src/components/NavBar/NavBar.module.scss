@@ -51,15 +51,15 @@
       padding: 0.5vw 0;
       gap: 0;
       padding-right: 14vw;
+      align-items: center;
       li {
         text-align: center;
         font-size: 2vw;
         padding: 0 1vw;
         border-left: 1px solid $black;
 
-
-        &:last-child{
-            border-right: 1px solid $black;
+        &:last-child {
+          border-right: 1px solid $black;
         }
         a {
         }

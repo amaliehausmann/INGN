@@ -1,9 +1,21 @@
-import style from './NewsCard.module.scss'
+import style from "./NewsCard.module.scss";
 
-
-export const NewsCard = ({ title, content, date, writer, imageSRC, children, imageStyling, number }) => {
+export const NewsCard = ({
+  title,
+  content,
+  date,
+  writer,
+  imageSRC,
+  children,
+  imageStyling,
+  number,
+}) => {
   return (
-    <div className={`${style.cardStyling} ${style[imageStyling]} ${style[`news-${number}`]}`}>
+    <div
+      className={`${style.cardStyling} ${style[imageStyling]} ${
+        style[`news-${number}`]
+      }`}
+    >
       <div>
         <img src={imageSRC} alt="" />
         <h1>{title}</h1>
@@ -13,8 +25,10 @@ export const NewsCard = ({ title, content, date, writer, imageSRC, children, ima
         <p className={style.contentStyling}>{content}</p>
         {children}
       </div>
-      <div className={style.imageContainer} style={{ backgroundImage: `url(${imageSRC})` }}>
-      </div>
+      <div
+        className={style.imageContainer}
+        style={{ backgroundImage: `url(${imageSRC})` }}
+      ></div>
     </div>
   );
 };
