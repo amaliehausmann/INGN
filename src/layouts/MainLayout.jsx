@@ -2,6 +2,7 @@ import { Outlet } from "react-router-dom";
 import { Header } from "../components/Header/Header";
 import { useState } from "react";
 import { Footer } from "../components/Footer/Footer";
+import { CookieBanner } from "../components/CookieBanner/CookieBanner";
 
 export const MainLayout = () => {
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -13,6 +14,7 @@ export const MainLayout = () => {
         {/* Bruges til at sende data fra headeren og ned igennem outlet for at kunne access det i home.jsx */}
         <Outlet context={{ selectedCategory }}></Outlet>
       </main>
+      <CookieBanner></CookieBanner>
       <Footer></Footer>
     </>
   );
