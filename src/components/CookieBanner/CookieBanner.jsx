@@ -1,5 +1,6 @@
 import { useState } from "react";
 import reactGA from "react-ga4";
+import style from './CookieBanner.module.scss';
 
 export const CookieBanner = () => {
   const [withAnalytics, setWithAnalytics] = useState(false);
@@ -26,10 +27,10 @@ export const CookieBanner = () => {
   return (
     !hasUserCookie &&
     hasUserAccepted === null && (
-      <div>
+      <div className={style.cookieStyling}>
         <p>Denne side bruger cookies</p>
-        <button onClick={denyGA}>DENY</button>
-        <button onClick={acceptGA}>ACCEPT</button>
+        <button className={style.denyButton} onClick={denyGA}>DENY</button>
+        <button className={style.acceptButton} onClick={acceptGA}>ACCEPT</button>
       </div>
     )
   );

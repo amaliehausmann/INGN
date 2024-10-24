@@ -1,0 +1,48 @@
+@use '../../styles/placeholders' as *;
+@use '../../styles/variables' as *;
+.cookieStyling{
+    position: fixed;
+    top: 30%;
+    right: 25%;
+    background-color: $white;
+    @extend %roboto;
+    width: 50vw;
+    text-align: center;
+    border: 2px solid $red;
+    padding: 5vw 0;
+
+    p{
+        font-size: 3vw;
+    }
+
+    button{
+        @extend %roboto;
+        width: 20vw;
+        display: block;
+        margin: 2vw auto;
+        font-size: 2vw;
+        padding: 1vw;
+    }
+
+
+}
+
+.denyButton{
+    background-color: black;
+    color: white;
+    border: none;
+
+    &:hover{
+        background-color: #313131;
+    }
+}
+
+.acceptButton{
+    background-color: $white;
+    border: 2px solid $red;
+
+    &:hover{
+        background-color: $red;
+        color: white;
+    }
+}
